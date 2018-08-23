@@ -2,7 +2,7 @@
 
 ## Install the Workshop GitHub Repository
 
-1. If you haven't already done so, download or use git to clone the [Workshop Repository](https://github.com/SteeltoeOSS/Workshop).
+1. If you haven't already done so, download or use git to clone the [Workshop Repository](https://github.com/tezizzm/Workshop).
 
    ---
 
