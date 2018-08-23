@@ -103,72 +103,72 @@ In order to get the application running on Cloud Foundry we will first publish t
 
    ```bash
    ----
-  Pushing from manifest to org Northwest / space mkillens as mkillens@pivotal.io...
-  Using manifest file manifest.yml
-  Getting app info...
-  Creating app with these attributes...
-  + name:        env
-    path:        C:\CuDirectLab\Workshop\Lab01\CloudFoundry\bin\Debug\netcoreapp2.0\ubuntu.14.04-x64\publish
-  + buildpack:   dotnet_core_buildpack
-  + instances:   1
-  + memory:      512M
-  + stack:       cflinuxfs2
-    env:
-  +   ASPNETCORE_ENVIRONMENT
-    routes:
-  +   env-interested-badger.cfapps.io
+    Pushing from manifest to org Northwest / space mkillens as mkillens@pivotal.io...
+    Using manifest file manifest.yml
+    Getting app info...
+    Creating app with these attributes...
+    + name:        env
+      path:        C:\CuDirectLab\Workshop\Lab01\CloudFoundry\bin\Debug\netcoreapp2.0\ubuntu.14.04-x64\publish
+    + buildpack:   dotnet_core_buildpack
+    + instances:   1
+    + memory:      512M
+    + stack:       cflinuxfs2
+      env:
+    +   ASPNETCORE_ENVIRONMENT
+      routes:
+    +   env-interested-badger.cfapps.io
 
-  Creating app env...
-  Mapping routes...
-  Comparing local files to remote cache...
-  Packaging files to upload...
-  Uploading files...
-  4.71 MiB / 4.71 MiB [=================================================================================================================================================] 100.00% 6s
+    Creating app env...
+    Mapping routes...
+    Comparing local files to remote cache...
+    Packaging files to upload...
+    Uploading files...
+    4.71 MiB / 4.71 MiB [=================================================================================================================================================] 100.00% 6s
 
-  Waiting for API to complete processing files...
+    Waiting for API to complete processing files...
 
-  Staging app and tracing logs...
-    Downloading dotnet_core_buildpack...
-    Downloaded dotnet_core_buildpack
-    Cell f3e4c843-cd29-4c31-945f-df32f945787c creating container for instance 5b3f2172-f87e-4df3-a277-264775061566
-    Cell f3e4c843-cd29-4c31-945f-df32f945787c successfully created container for instance 5b3f2172-f87e-4df3-a277-264775061566
-    Downloading app package...
-    Downloaded app package (38.6M)
-    -----> Dotnet-Core Buildpack version 2.1.4
-    -----> Supplying Dotnet Core
-    -----> Installing libunwind 1.2.1
-            Copy [/tmp/buildpacks/3b2a3bceda4123d402e8eae7b2bc2e9b/dependencies/f07daf88dca0dbaf914f69bd08a4bc50/libunwind-1.2.1-cflinuxfs2-db7f7257.tar.gz]
-            using the default SDK
-    -----> Installing dotnet 2.1.302
-            Copy [/tmp/buildpacks/3b2a3bceda4123d402e8eae7b2bc2e9b/dependencies/33055bbe7243da389e18335fb902e719/dotnet.2.1.302.linux-amd64-cflinuxfs2-17f2d281.tar.xz]
-    -----> Finalizing Dotnet Core
-    -----> Cleaning staging area
-            Removing dotnet
-    Exit status 0
-    Uploading droplet, build artifacts cache...
-    Uploading droplet...
-    Uploading build artifacts cache...
-    Uploaded build artifacts cache (221B)
-    Uploaded droplet (38.1M)
-    Uploading complete
-    Cell f3e4c843-cd29-4c31-945f-df32f945787c stopping instance 5b3f2172-f87e-4df3-a277-264775061566
-    Cell f3e4c843-cd29-4c31-945f-df32f945787c destroying container for instance 5b3f2172-f87e-4df3-a277-264775061566
-    Cell f3e4c843-cd29-4c31-945f-df32f945787c successfully destroyed container for instance 5b3f2172-f87e-4df3-a277-264775061566
+    Staging app and tracing logs...
+      Downloading dotnet_core_buildpack...
+      Downloaded dotnet_core_buildpack
+      Cell f3e4c843-cd29-4c31-945f-df32f945787c creating container for instance 5b3f2172-f87e-4df3-a277-264775061566
+      Cell f3e4c843-cd29-4c31-945f-df32f945787c successfully created container for instance 5b3f2172-f87e-4df3-a277-264775061566
+      Downloading app package...
+      Downloaded app package (38.6M)
+      -----> Dotnet-Core Buildpack version 2.1.4
+      -----> Supplying Dotnet Core
+      -----> Installing libunwind 1.2.1
+              Copy [/tmp/buildpacks/3b2a3bceda4123d402e8eae7b2bc2e9b/dependencies/f07daf88dca0dbaf914f69bd08a4bc50/libunwind-1.2.1-cflinuxfs2-db7f7257.tar.gz]
+              using the default SDK
+      -----> Installing dotnet 2.1.302
+              Copy [/tmp/buildpacks/3b2a3bceda4123d402e8eae7b2bc2e9b/dependencies/33055bbe7243da389e18335fb902e719/dotnet.2.1.302.linux-amd64-cflinuxfs2-17f2d281.tar.xz]
+      -----> Finalizing Dotnet Core
+      -----> Cleaning staging area
+              Removing dotnet
+      Exit status 0
+      Uploading droplet, build artifacts cache...
+      Uploading droplet...
+      Uploading build artifacts cache...
+      Uploaded build artifacts cache (221B)
+      Uploaded droplet (38.1M)
+      Uploading complete
+      Cell f3e4c843-cd29-4c31-945f-df32f945787c stopping instance 5b3f2172-f87e-4df3-a277-264775061566
+      Cell f3e4c843-cd29-4c31-945f-df32f945787c destroying container for instance 5b3f2172-f87e-4df3-a277-264775061566
+      Cell f3e4c843-cd29-4c31-945f-df32f945787c successfully destroyed container for instance 5b3f2172-f87e-4df3-a277-264775061566
 
-  Waiting for app to start...
+    Waiting for app to start...
 
-  name:              env
-  requested state:   started
-  instances:         1/1
-  usage:             512M x 1 instances
-  routes:            env-interested-badger.cfapps.io
-  last uploaded:     Thu 23 Aug 13:47:23 MST 2018
-  stack:             cflinuxfs2
-  buildpack:         dotnet_core_buildpack
-  start command:     cd ${HOME} && ./CloudFoundry --server.urls http://0.0.0.0:${PORT}
+    name:              env
+    requested state:   started
+    instances:         1/1
+    usage:             512M x 1 instances
+    routes:            env-interested-badger.cfapps.io
+    last uploaded:     Thu 23 Aug 13:47:23 MST 2018
+    stack:             cflinuxfs2
+    buildpack:         dotnet_core_buildpack
+    start command:     cd ${HOME} && ./CloudFoundry --server.urls http://0.0.0.0:${PORT}
 
-      state     since                  cpu    memory          disk          details
-  #0   running   2018-08-23T20:48:49Z   0.0%   37.6K of 512M   15.5M of 1G
+        state     since                  cpu    memory          disk          details
+    #0   running   2018-08-23T20:48:49Z   0.0%   37.6K of 512M   15.5M of 1G
 
    ```
 
