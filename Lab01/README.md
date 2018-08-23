@@ -12,7 +12,7 @@ This is the first application we will look at that is leveraging Steeltoe.
 
 This application was created using the out of the box ASP.NET Core MVC template used by the `dotnet` CLI.
 
-The code generated was then modified to make use of the [Steeltoe CloudFoundry Configuration Provider](https://github.com/SteeltoeOSS/Configuration/tree/master/src/Steeltoe.Extensions.Configuration.CloudFoundry). The Steeltoe component is used to parse and access the JSON configuration data provided to it by CloudFoundry environment variables, `VCAP_APPLICATION`, `VCAP_SERVICES` and `CF_*`.
+The code generated was then modified to make use of the [Steeltoe CloudFoundry Configuration Provider](https://github.com/SteeltoeOSS/Configuration/tree/master/src/Steeltoe.Extensions.Configuration.CloudFoundryCore). The Steeltoe component is used to parse and access the JSON configuration data provided to it by CloudFoundry environment variables, `VCAP_APPLICATION`, `VCAP_SERVICES` and `CF_*`.
 
 ## Some Background
 
@@ -22,9 +22,9 @@ As you will see during this workshop, the Steeltoe project has added some additi
 
 These include:
 
-* [CloudFoundry Configuration](https://github.com/SteeltoeOSS/Configuration/tree/master/src/Steeltoe.Extensions.Configuration.CloudFoundry)
+* [CloudFoundry Configuration](https://github.com/SteeltoeOSS/Configuration/tree/master/src/Steeltoe.Extensions.Configuration.CloudFoundryCore)
 
-* [Config Server Client](https://github.com/SteeltoeOSS/Configuration/tree/master/src/Steeltoe.Extensions.Configuration.ConfigServer)
+* [Config Server Client](https://github.com/SteeltoeOSS/Configuration/tree/master/src/Steeltoe.Extensions.Configuration.ConfigServerBase)
 
 To get a better understanding of the `Microsoft Configuration Extensions` have a look at the [ASP.NET Core documentation](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration) on the subject.
 
@@ -36,10 +36,10 @@ Later on in the workshop we will take a much closer look at the `Microsoft Confi
 
 If you haven't already done so, download or clone the workshop GitHub repository using the command below.
 
-If you don't have git installed, you can click 'Download ZIP' on the right side of the [GitHub page](https://github.com/SteeltoeOSS/Workshop).
+If you don't have git installed, you can click 'Download ZIP' on the right side of the [GitHub page](https://github.com/tezizzm/Workshop).
 
 ```bash
-> git clone https://github.com/SteeltoeOSS/Workshop
+> git clone https://github.com/tezizzm/Workshop
 ```
 
 ## Target Cloud Foundry
@@ -204,19 +204,19 @@ When you push your application to Cloud Foundry there are a number of things to 
 
 * In most cases, the CLI indicates each Cloud Foundry API call as it happens. In reviewing the output above you can see the CLI has created an application named `env` and has started it in your assigned Cloud Foundry org and space.
 
-* All HTTP/HTTPS requests to applications flow through Cloud Foundry's front-end router named the [(Go)Router](https://docs.pivotal.io/pivotalcf/1-7/concepts/architecture/router.html). Here the CLI is creating a route with random word tokens inserted to prevent route collisions across the default domain. Take a minute and look at the `manifest.yml` to see how this is done.
+* All HTTP/HTTPS requests to applications flow through Cloud Foundry's front-end router named the [(Go)Router](https://docs.pivotal.io/pivotalcf/2-2/concepts/architecture/router.html). Here the CLI is creating a route with random word tokens inserted to prevent route collisions across the default domain. Take a minute and look at the `manifest.yml` to see how this is done.
 
-* The CLI is also _binding_ the created route to the application. Routes can actually be bound to multiple applications to support techniques such as [blue-green deployments](https://docs.pivotal.io/pivotalcf/1-7/devguide/deploy-apps/blue-green.html).
+* The CLI is also _binding_ the created route to the application. Routes can actually be bound to multiple applications to support techniques such as [blue-green deployments](https://docs.pivotal.io/pivotalcf/2-2/devguide/deploy-apps/blue-green.html).
 
 * The CLI finally uploads the application bits to Cloud Foundry. Notice that it's uploading several _files_, all those found in the publish directory! This is because Cloud Foundry actually uploads all the files for the deployment for caching purposes.
 
 * When Cloud Foundry starts the application it first must run the application through the staging process. The staging process prepares the application to run on Cloud Foundry. Cloud Foundry will create two containers, one to stage the application and then a second to actually run or host the prepared bits.
 
-* The final package of your application, which is created as a result of the staging process, contains all of the necessary runtime bits needed for the application to run. In Cloud Foundry terminology we refer to this as a _droplet_. You will notice from the output that the droplet is being uploaded to Pivotal Cloud Foundry's internal blob store so that it can be easily copied/replicated to one or more [Diego Cells](https://docs.pivotal.io/pivotalcf/1-7/concepts/diego/diego-architecture.html) for execution.
+* The final package of your application, which is created as a result of the staging process, contains all of the necessary runtime bits needed for the application to run. In Cloud Foundry terminology we refer to this as a _droplet_. You will notice from the output that the droplet is being uploaded to Pivotal Cloud Foundry's internal blob store so that it can be easily copied/replicated to one or more [Diego Cells](https://docs.pivotal.io/pivotalcf/2-2/concepts/diego/diego-architecture.html) for execution.
 
 * Notice that the CLI tells you exactly what command and argument will be used to start your application.
 
-* Finally, once the second container is created and the application has been started, the CLI reports the current status of your application's health, including the number of instances started, what stack it's running on and the URL(s) that can be used to access it.
+* Finally, once the second container is created and the 5   has been started, the CLI reports the current status of your application's health, including the number of instances started, what stack it's running on and the URL(s) that can be used to access it.
 
 ## View Application in AppsManager
 
